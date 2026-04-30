@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amy's Place | Champaign, IL</title>
+    <!-- Google Fonts for typography that matches the logo's vibe -->
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-bg: #110842; /* Deep blue from the top right */
+            --secondary-bg: #4a104c; /* Deep purple from the bottom left */
+            --accent-orange: #f25b38; /* The text color */
+            --accent-pink: #cc2553; /* The glass graphic color */
+            --text-light: #f8f8f8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--primary-bg) 0%, var(--secondary-bg) 100%);
+            color: var(--text-light);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-family: 'Pacifico', cursive;
+            color: var(--accent-orange);
+            font-weight: normal;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgba(17, 8, 66, 0.6);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 2.2rem;
+            color: var(--accent-orange);
+            text-decoration: none;
+        }
+
+        /* Hero Section */
+        header.hero {
+            text-align: center;
+            padding: 100px 20px;
+            background: radial-gradient(circle at center, rgba(204, 37, 83, 0.2) 0%, transparent 70%);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+            color: #ddd;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-orange);
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-pink);
+            transform: translateY(-2px);
+        }
+
+        /* Main Content Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Grid Sections */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .card h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            border-bottom: 2px dashed var(--accent-pink);
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        .card ul {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .card ul li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .card ul li::before {
+            content: '♥';
+            color: var(--accent-pink);
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+
+        /* Reviews Section */
+        .reviews {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .reviews h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .review-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .review-box {
+            flex: 1;
+            min-width: 250px;
+            background: rgba(242, 91, 56, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid var(--accent-orange);
+            font-style: italic;
+        }
+
+        /* Footer */
+        footer {
+            background: #0a041c;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo">Amy's Place</a>
+        <div>
+            <!-- Placeholder for social links or future menu items -->
+            <a href="#visit" class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Visit Us</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>Welcome to Amy's Place</h1>
+        <p>Locally lesbian owned gay bar, lounge, karaoke, bingo, trivia, drag shows, and great dancing! Quiet during the day and loud at night!</p>
+        <a href="#visit" class="btn">Get Directions</a>
+    </header>
+
+    <main class="container">
+        
+        <div class="info-grid">
+            <!-- Events & Vibe Card -->
+            <div class="card">
+                <h2>The Vibe</h2>
+                <p>Whether you're looking for a chill afternoon or an unforgettable night out, we've got you covered. Join us for our weekly events!</p>
+                <ul>
+                    <li>Karaoke Nights</li>
+                    <li>Bingo & Trivia</li>
+                    <li>Spectacular Drag Shows</li>
+                    <li>Great Dancing</li>
+                </ul>
+            </div>
+
+            <!-- Visit Us Card -->
+            <div class="card" id="visit">
+                <h2>Drop On By</h2>
+                <p><strong>Address:</strong><br> 120 N 1st St, Champaign, IL 61820</p>
+                <p style="margin-top: 15px;"><strong>Hours:</strong><br> Open Every Day: 5 PM – 2 AM</p>
+                <p style="margin-top: 15px;"><strong>Contact:</strong><br> (217) 819-6102</p>
+                <div style="margin-top: 20px; padding: 10px; background: rgba(204, 37, 83, 0.2); border-radius: 8px; text-align: center;">
+                    <strong>Note:</strong> We are a Cash-Only establishment. <br> Drinks range from $1–$10!
+                </div>
+            </div>
+        </div>
+
+        <!-- Google Reviews Highlight -->
+        <div class="reviews">
+            <h2>What People Are Saying</h2>
+            <div class="review-container">
+                <div class="review-box">
+                    "Great atmosphere and awesome people!"
+                </div>
+                <div class="review-box">
+                    "The staff were all so friendly & inviting."
+                </div>
+                <div class="review-box">
+                    "The bartenders are super sweet :)"
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Amy's Place. All rights reserved. | 120 N 1st St, Champaign, IL</p>
+    </footer>
+
+</body>
+</html>
