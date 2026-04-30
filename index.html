@@ -20,7 +20,7 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        html { scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; background: var(--primary-bg); }
 
         body {
             font-family: 'Poppins', sans-serif;
@@ -35,7 +35,7 @@
         body::before {
             content: '';
             position: fixed;
-            inset: 0;
+            inset: -60px;
             background:
                 radial-gradient(circle at 20% 10%, rgba(204, 37, 83, 0.35), transparent 45%),
                 radial-gradient(circle at 80% 90%, rgba(74, 16, 76, 0.6), transparent 50%),
