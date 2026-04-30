@@ -3,190 +3,390 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amy's Place | Champaign, IL</title>
-    <!-- Google Fonts for typography that matches the logo's vibe -->
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Amy's Place | Champaign's Lesbian-Owned Gay Bar</title>
+    <meta name="description" content="Amy's Place is a locally lesbian-owned gay bar in Champaign, IL. Karaoke, bingo, trivia, drag shows & dancing. Quiet by day, loud by night.">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-bg: #110842; /* Deep blue from the top right */
-            --secondary-bg: #4a104c; /* Deep purple from the bottom left */
-            --accent-orange: #f25b38; /* The text color */
-            --accent-pink: #cc2553; /* The glass graphic color */
+            --primary-bg: #110842;
+            --secondary-bg: #4a104c;
+            --deep-bg: #0a041c;
+            --accent-orange: #f25b38;
+            --accent-pink: #cc2553;
+            --accent-glow: #ff6b9d;
             --text-light: #f8f8f8;
+            --text-muted: #c9c4d6;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, var(--primary-bg) 0%, var(--secondary-bg) 100%);
+            background: var(--primary-bg);
             color: var(--text-light);
-            line-height: 1.6;
+            line-height: 1.65;
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
-        /* Typography */
+        /* Animated gradient background */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(circle at 20% 10%, rgba(204, 37, 83, 0.35), transparent 45%),
+                radial-gradient(circle at 80% 90%, rgba(74, 16, 76, 0.6), transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(242, 91, 56, 0.15), transparent 60%),
+                linear-gradient(135deg, var(--primary-bg) 0%, var(--secondary-bg) 100%);
+            z-index: -2;
+            animation: drift 18s ease-in-out infinite alternate;
+        }
+
+        @keyframes drift {
+            from { transform: translate(0, 0) scale(1); }
+            to   { transform: translate(-30px, 20px) scale(1.05); }
+        }
+
         h1, h2, h3 {
             font-family: 'Pacifico', cursive;
             color: var(--accent-orange);
             font-weight: normal;
+            line-height: 1.2;
         }
+
+        a { color: var(--accent-glow); }
 
         /* Navigation */
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 50px;
-            background: rgba(17, 8, 66, 0.6);
-            backdrop-filter: blur(10px);
+            padding: 18px 8vw;
+            background: rgba(10, 4, 28, 0.55);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
             position: sticky;
             top: 0;
             z-index: 100;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
         }
 
         .logo {
-            font-size: 2.2rem;
+            font-family: 'Pacifico', cursive;
+            font-size: 2rem;
             color: var(--accent-orange);
             text-decoration: none;
+            text-shadow: 0 0 20px rgba(242, 91, 56, 0.4);
         }
 
-        /* Hero Section */
-        header.hero {
-            text-align: center;
-            padding: 100px 20px;
-            background: radial-gradient(circle at center, rgba(204, 37, 83, 0.2) 0%, transparent 70%);
+        .nav-links { display: flex; gap: 28px; align-items: center; }
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 400;
+            transition: color 0.2s;
         }
-
-        .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto 30px auto;
-            color: #ddd;
-        }
+        .nav-links a:hover { color: var(--accent-orange); }
 
         .btn {
             display: inline-block;
-            background-color: var(--accent-orange);
+            background: linear-gradient(135deg, var(--accent-orange), var(--accent-pink));
             color: #fff;
-            padding: 12px 30px;
+            padding: 12px 28px;
             border-radius: 30px;
             text-decoration: none;
             font-weight: 600;
-            transition: transform 0.2s, background 0.2s;
+            font-size: 0.95rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 20px rgba(242, 91, 56, 0.35);
+            border: none;
+            cursor: pointer;
         }
 
         .btn:hover {
-            background-color: var(--accent-pink);
             transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(204, 37, 83, 0.5);
         }
 
-        /* Main Content Container */
+        .btn-sm { padding: 8px 18px; font-size: 0.85rem; }
+
+        /* Hero */
+        header.hero {
+            text-align: center;
+            padding: 110px 20px 90px;
+            position: relative;
+        }
+
+        .hero-eyebrow {
+            display: inline-block;
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--accent-glow);
+            margin-bottom: 18px;
+            padding: 6px 16px;
+            border: 1px solid rgba(255, 107, 157, 0.4);
+            border-radius: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.8rem, 7vw, 5.5rem);
+            margin-bottom: 18px;
+            text-shadow: 0 0 40px rgba(242, 91, 56, 0.4);
+        }
+
+        .hero p.tagline {
+            font-size: 1.15rem;
+            max-width: 640px;
+            margin: 0 auto 35px auto;
+            color: var(--text-muted);
+        }
+
+        .hero-cta { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid rgba(255,255,255,0.25);
+            box-shadow: none;
+        }
+        .btn-outline:hover {
+            background: rgba(255,255,255,0.08);
+            border-color: var(--accent-orange);
+        }
+
+        /* Container */
         .container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 60px 20px;
         }
 
-        /* Grid Sections */
+        .section-title {
+            text-align: center;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            margin-bottom: 12px;
+        }
+        .section-sub {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 45px;
+            max-width: 520px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Events strip */
+        .events-strip {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 16px;
+            margin-bottom: 30px;
+        }
+        .event-pill {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            padding: 22px 16px;
+            text-align: center;
+            transition: transform 0.2s, border-color 0.2s, background 0.2s;
+        }
+        .event-pill:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-orange);
+            background: rgba(242, 91, 56, 0.08);
+        }
+        .event-pill .icon { font-size: 2rem; display: block; margin-bottom: 8px; }
+        .event-pill .label {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+
+        /* Info grid */
         .info-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-bottom: 60px;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 30px;
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            padding: 35px;
+            border-radius: 18px;
+            backdrop-filter: blur(8px);
         }
 
         .card h2 {
             font-size: 2rem;
-            margin-bottom: 15px;
-            border-bottom: 2px dashed var(--accent-pink);
-            padding-bottom: 10px;
-            display: inline-block;
+            margin-bottom: 18px;
         }
 
-        .card ul {
-            list-style: none;
-            margin-top: 15px;
+        .info-row {
+            display: flex;
+            gap: 14px;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
         }
-
-        .card ul li {
-            margin-bottom: 10px;
-            position: relative;
-            padding-left: 25px;
-        }
-
-        .card ul li::before {
-            content: '♥';
-            color: var(--accent-pink);
-            position: absolute;
-            left: 0;
-            font-size: 1.2rem;
-        }
-
-        /* Reviews Section */
-        .reviews {
+        .info-row:last-child { border-bottom: none; }
+        .info-row .info-icon {
+            font-size: 1.4rem;
+            min-width: 32px;
             text-align: center;
-            margin-bottom: 60px;
+        }
+        .info-row strong { color: var(--accent-orange); display: block; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+        .info-row span { color: var(--text-light); }
+
+        .cash-note {
+            margin-top: 22px;
+            padding: 14px 18px;
+            background: linear-gradient(135deg, rgba(204, 37, 83, 0.25), rgba(242, 91, 56, 0.15));
+            border-radius: 12px;
+            text-align: center;
+            font-size: 0.95rem;
+            border: 1px dashed rgba(255, 107, 157, 0.4);
         }
 
-        .reviews h2 {
-            font-size: 2.5rem;
+        /* Map */
+        .map-wrap {
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+            min-height: 300px;
+            height: 100%;
+        }
+        .map-wrap iframe { width: 100%; height: 100%; min-height: 300px; border: 0; display: block; filter: hue-rotate(20deg) saturate(0.9); }
+
+        /* Social feed */
+        .social-feed {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 22px;
             margin-bottom: 30px;
         }
 
-        .review-container {
+        .post {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 22px;
             display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
+            flex-direction: column;
+            gap: 12px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        .post:hover { transform: translateY(-3px); border-color: rgba(255, 107, 157, 0.5); }
+
+        .post-head { display: flex; align-items: center; gap: 12px; }
+        .post-avatar {
+            width: 44px; height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-orange), var(--accent-pink));
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Pacifico', cursive;
+            font-size: 1.3rem;
+            color: #fff;
+        }
+        .post-meta { font-size: 0.85rem; color: var(--text-muted); }
+        .post-meta .name { color: var(--text-light); font-weight: 600; display: block; }
+
+        .post-body { font-size: 0.95rem; color: var(--text-light); }
+        .post-tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            background: rgba(242, 91, 56, 0.2);
+            color: var(--accent-orange);
+            padding: 3px 10px;
+            border-radius: 12px;
+            margin-top: 6px;
+        }
+        .post-foot {
+            display: flex; gap: 18px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            padding-top: 10px;
+            border-top: 1px solid rgba(255,255,255,0.06);
         }
 
+        .fb-cta {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        /* Reviews */
+        .review-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
         .review-box {
-            flex: 1;
-            min-width: 250px;
-            background: rgba(242, 91, 56, 0.1);
-            padding: 20px;
-            border-radius: 10px;
+            background: rgba(242, 91, 56, 0.08);
+            padding: 26px;
+            border-radius: 14px;
             border-left: 4px solid var(--accent-orange);
             font-style: italic;
+            position: relative;
+        }
+        .review-box::before {
+            content: '"';
+            position: absolute;
+            top: -10px; left: 14px;
+            font-family: 'Pacifico', cursive;
+            font-size: 4rem;
+            color: var(--accent-pink);
+            opacity: 0.4;
+            line-height: 1;
+        }
+        .review-box .author {
+            display: block;
+            margin-top: 12px;
+            font-style: normal;
+            font-size: 0.85rem;
+            color: var(--accent-glow);
         }
 
         /* Footer */
         footer {
-            background: #0a041c;
+            background: var(--deep-bg);
             text-align: center;
-            padding: 30px 20px;
+            padding: 40px 20px;
             margin-top: 40px;
             font-size: 0.9rem;
-            color: #aaa;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+        footer .socials {
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+            margin-bottom: 18px;
+        }
+        footer .socials a {
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 8px 16px;
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+        footer .socials a:hover {
+            border-color: var(--accent-orange);
+            color: var(--accent-orange);
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
-            .info-grid {
-                grid-template-columns: 1fr;
-            }
-            .hero h1 {
-                font-size: 3rem;
-            }
+            nav { padding: 16px 20px; }
+            .nav-links { gap: 14px; }
+            .nav-links a:not(.btn) { display: none; }
+            .info-grid { grid-template-columns: 1fr; }
+            header.hero { padding: 70px 20px 60px; }
+            .container { padding: 40px 16px; }
+            .card { padding: 26px; }
         }
     </style>
 </head>
@@ -194,65 +394,148 @@
 
     <nav>
         <a href="#" class="logo">Amy's Place</a>
-        <div>
-            <!-- Placeholder for social links or future menu items -->
-            <a href="#visit" class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Visit Us</a>
+        <div class="nav-links">
+            <a href="#events">Events</a>
+            <a href="#feed">Feed</a>
+            <a href="#visit">Visit</a>
+            <a href="#visit" class="btn btn-sm">Get Directions</a>
         </div>
     </nav>
 
     <header class="hero">
-        <h1>Welcome to Amy's Place</h1>
-        <p>Locally lesbian owned gay bar, lounge, karaoke, bingo, trivia, drag shows, and great dancing! Quiet during the day and loud at night!</p>
-        <a href="#visit" class="btn">Get Directions</a>
+        <span class="hero-eyebrow">Locally Lesbian-Owned · Champaign, IL</span>
+        <h1>Amy's Place</h1>
+        <p class="tagline">Quiet during the day. Loud at night. A gay bar, lounge, and dance floor where karaoke, bingo, trivia, and drag all share the same stage.</p>
+        <div class="hero-cta">
+            <a href="#visit" class="btn">Drop On By</a>
+            <a href="https://www.facebook.com/p/Amys-Place-61581318163806/" target="_blank" rel="noopener" class="btn btn-outline">Follow on Facebook</a>
+        </div>
     </header>
 
-    <main class="container">
-        
-        <div class="info-grid">
-            <!-- Events & Vibe Card -->
-            <div class="card">
-                <h2>The Vibe</h2>
-                <p>Whether you're looking for a chill afternoon or an unforgettable night out, we've got you covered. Join us for our weekly events!</p>
-                <ul>
-                    <li>Karaoke Nights</li>
-                    <li>Bingo & Trivia</li>
-                    <li>Spectacular Drag Shows</li>
-                    <li>Great Dancing</li>
-                </ul>
-            </div>
+    <main class="container" style="padding-top: 20px;">
 
-            <!-- Visit Us Card -->
-            <div class="card" id="visit">
-                <h2>Drop On By</h2>
-                <p><strong>Address:</strong><br> 120 N 1st St, Champaign, IL 61820</p>
-                <p style="margin-top: 15px;"><strong>Hours:</strong><br> Open Every Day: 5 PM – 2 AM</p>
-                <p style="margin-top: 15px;"><strong>Contact:</strong><br> (217) 819-6102</p>
-                <div style="margin-top: 20px; padding: 10px; background: rgba(204, 37, 83, 0.2); border-radius: 8px; text-align: center;">
-                    <strong>Note:</strong> We are a Cash-Only establishment. <br> Drinks range from $1–$10!
+        <!-- Events strip (replaces removed Vibe card) -->
+        <section id="events" style="margin-bottom: 70px;">
+            <h2 class="section-title">What's Happening</h2>
+            <p class="section-sub">A rotating lineup of nights that keep the dance floor full.</p>
+            <div class="events-strip">
+                <div class="event-pill"><span class="icon">🎤</span><span class="label">Karaoke</span></div>
+                <div class="event-pill"><span class="icon">🎱</span><span class="label">Bingo</span></div>
+                <div class="event-pill"><span class="icon">🧠</span><span class="label">Trivia</span></div>
+                <div class="event-pill"><span class="icon">👑</span><span class="label">Drag Shows</span></div>
+                <div class="event-pill"><span class="icon">💃</span><span class="label">Dancing</span></div>
+            </div>
+        </section>
+
+        <!-- Visit + Map -->
+        <section id="visit" style="margin-bottom: 70px;">
+            <div class="info-grid">
+                <div class="card">
+                    <h2>Drop On By</h2>
+                    <div class="info-row">
+                        <div class="info-icon">📍</div>
+                        <div><strong>Address</strong><span>120 N 1st St<br>Champaign, IL 61820</span></div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-icon">🕔</div>
+                        <div><strong>Hours</strong><span>Open Every Day · 5 PM – 2 AM</span></div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-icon">📞</div>
+                        <div><strong>Contact</strong><span><a href="tel:+12178196102" style="color:inherit; text-decoration:none;">(217) 819-6102</a></span></div>
+                    </div>
+                    <div class="cash-note">
+                        💵 <strong>Cash-Only.</strong> Drinks $1–$10.
+                    </div>
+                </div>
+
+                <div class="map-wrap">
+                    <iframe
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        src="https://www.google.com/maps?q=120+N+1st+St,+Champaign,+IL+61820&output=embed">
+                    </iframe>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- Google Reviews Highlight -->
-        <div class="reviews">
-            <h2>What People Are Saying</h2>
+        <!-- Social Feed -->
+        <section id="feed" style="margin-bottom: 70px;">
+            <h2 class="section-title">From the Feed</h2>
+            <p class="section-sub">Catch the latest from our Facebook — events, drag lineups, and what's pouring tonight.</p>
+
+            <div class="social-feed">
+                <article class="post">
+                    <div class="post-head">
+                        <div class="post-avatar">A</div>
+                        <div class="post-meta"><span class="name">Amy's Place</span>This week</div>
+                    </div>
+                    <div class="post-body">
+                        Karaoke is back tonight! Grab the mic, grab a friend, and let's see who's brave enough to take on Whitney. 🎤
+                        <br><span class="post-tag">#KaraokeNight</span>
+                    </div>
+                    <div class="post-foot">❤️ Likes · 💬 Comments · ↗️ Share</div>
+                </article>
+
+                <article class="post">
+                    <div class="post-head">
+                        <div class="post-avatar">A</div>
+                        <div class="post-meta"><span class="name">Amy's Place</span>Last weekend</div>
+                    </div>
+                    <div class="post-body">
+                        Drag show was 🔥🔥🔥 thank you to every queen who slayed and every soul who tipped. We love you Champaign.
+                        <br><span class="post-tag">#DragNight</span>
+                    </div>
+                    <div class="post-foot">❤️ Likes · 💬 Comments · ↗️ Share</div>
+                </article>
+
+                <article class="post">
+                    <div class="post-head">
+                        <div class="post-avatar">A</div>
+                        <div class="post-meta"><span class="name">Amy's Place</span>Reminder</div>
+                    </div>
+                    <div class="post-body">
+                        Friendly reminder we're <strong>cash only</strong> 💵 — there's an ATM nearby. Drinks start at a buck. Yes, really.
+                        <br><span class="post-tag">#GoodToKnow</span>
+                    </div>
+                    <div class="post-foot">❤️ Likes · 💬 Comments · ↗️ Share</div>
+                </article>
+            </div>
+
+            <div class="fb-cta">
+                <a href="https://www.facebook.com/p/Amys-Place-61581318163806/" target="_blank" rel="noopener" class="btn">See the Latest on Facebook</a>
+            </div>
+        </section>
+
+        <!-- Reviews -->
+        <section style="margin-bottom: 40px;">
+            <h2 class="section-title">What People Are Saying</h2>
+            <p class="section-sub">From the regulars and the first-timers.</p>
             <div class="review-container">
                 <div class="review-box">
-                    "Great atmosphere and awesome people!"
+                    Great atmosphere and awesome people!
+                    <span class="author">— A regular</span>
                 </div>
                 <div class="review-box">
-                    "The staff were all so friendly & inviting."
+                    The staff were all so friendly &amp; inviting.
+                    <span class="author">— First-time visitor</span>
                 </div>
                 <div class="review-box">
-                    "The bartenders are super sweet :)"
+                    The bartenders are super sweet :)
+                    <span class="author">— Happy customer</span>
                 </div>
             </div>
-        </div>
+        </section>
 
     </main>
 
     <footer>
-        <p>&copy; 2026 Amy's Place. All rights reserved. | 120 N 1st St, Champaign, IL</p>
+        <div class="socials">
+            <a href="https://www.facebook.com/p/Amys-Place-61581318163806/" target="_blank" rel="noopener">Facebook</a>
+            <a href="tel:+12178196102">Call</a>
+            <a href="https://www.google.com/maps?q=120+N+1st+St,+Champaign,+IL+61820" target="_blank" rel="noopener">Directions</a>
+        </div>
+        <p>&copy; 2026 Amy's Place · 120 N 1st St, Champaign, IL · Locally Lesbian-Owned 🏳️‍🌈</p>
     </footer>
 
 </body>
